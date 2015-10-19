@@ -10,7 +10,7 @@ public class Exercise2 {
         //Scanner scanner = new Scanner(System.in);
         //sayHello(scanner);
 
-        HashMap<String, ArrayList<String>> groups = new HashMap() ;//storing letter as a key, and the value will be storing an arraylist of strings.
+        HashMap<String, ArrayList<String>> groups = new HashMap();//storing letter as a key, and the value will be storing an arraylist of strings.
         String[] words = {"Alice", "Bob", "Charlie", "Austin", "Albert", "Connor"};
         //we want one key as A with an array list containing Alice, Austin and Albert. one key as B with Arraylist containing Bob
         for (String name : words) {
@@ -22,7 +22,7 @@ public class Exercise2 {
                 list.add(name);
                 groups.put(firstLetter, list); //storing the arraylist inside of the hashmap
             } else {
-                list.add(name); //arraylist is already in there so we dont need groups.put because the arraylist already exists
+                list.add(name); //arraylist is already in there so we don't need groups.put because the arraylist already exists
             }
         }
 
