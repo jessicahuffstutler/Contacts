@@ -27,7 +27,6 @@ public class Exercise3 {
                 }
             }
         }
-
         System.out.println(); //put here so we can run the debugger and ensure the above works properly
     }
 }
