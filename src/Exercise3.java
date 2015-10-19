@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by jessicahuffstutler on 10/19/15.
@@ -27,6 +28,14 @@ public class Exercise3 {
                 }
             }
         }
-        System.out.println(); //put here so we can run the debugger and ensure the above works properly
+
+        double randNum = Math.random();
+        int index = (int) (randNum * 4);
+        System.out.println(names[index]);
+
+        Random rand = new Random();
+        index = rand.nextInt(4); //should give us a number between 0 and 2
+        System.out.println(names[index]);
+
     }
 }
