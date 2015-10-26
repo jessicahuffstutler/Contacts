@@ -13,7 +13,7 @@ public class Exercise4 {
         for(String word : words) {
             String cleanedWord = word.toLowerCase().replace(",", "").replace(".", ""); //making all letters lower case and removing commmas from a word.
             if (frequencies.get(cleanedWord) == null) {
-                frequencies.put(cleanedWord, 1); //we haven't counted that word before so it gets a 1
+                frequencies.put(cleanedWord, 1); //we haven't counted that word before so it gets a quantity of 1
             } else {
                 int count = frequencies.get(cleanedWord);
                 frequencies.put(cleanedWord, count + 1);
