@@ -1,7 +1,9 @@
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by jessicahuffstutler on 10/28/15.
@@ -14,30 +16,20 @@ public class Exercise6 {
 //        my alternative way: List<String> five = names.subList(0, 5); //List is an interface that ArrayList implements
         names = new ArrayList(names.subList(0, 5)); //first index is inclusive and end index is exclusive
 
-        //Make every string inside uppercase (i.e. ALICE)
-        //Idea 1:
-        ArrayList<String> tempNames = new ArrayList();
-        for (String name : names) {
-            //name.toUpperCase(); //can't do this because it doesn't store it, we cant modify it because it doesnt save anywhere
-            //so we created a second ArrayList above to store temporary names.
-            tempNames.add(name.toUpperCase());
-        }
-        names = tempNames;
+        //End display = ["BOB", "CHARLIE", "DAVID"]
+        solveViaTempLists(names);
+        solveViaDirectModification(names);
+        solveViaStream(names);
+    }
 
-        //Idea 2:
-//        for (int i = 0; i < names.size(); i++) {
-//            String s = names.get(i).toUpperCase();
-//            names.set(i, s); //directly replacing instead of creating a new ArrayList
-//        }
+    static void solveViaDirectModification(ArrayList<String> names) {
+        //make every string inside uppercase (i.e. ALICE)
+        for (int i = 0; i < names.size(); i++) {
+            String s = names.get(i).toUpperCase();
+            names.set(i, s); //directly replacing instead of creating a new ArrayList
+        }
 
         //Remove the ones that start with "a"
-        //Attempt 1: (no bananas)
-//        for (String name : names) {
-//            if (name.startsWith("A")) {
-//                names.remove(name); //cant do this because you're looping over something and changing the size at the same time (removing name(s))
-//            }
-//        }
-
         Iterator it = names.iterator(); //iterating over an ArrayList
         //search for "java remove while looping" to find this syntax
         while (it.hasNext()) { //if there is anything left in the ArrayList, keep looping
@@ -47,7 +39,45 @@ public class Exercise6 {
             }
         }
 
-        //End display = ["BOB", "CHARLIE", "DAVID"]
         System.out.println(names);
+    }
+
+    static void solveViaTempLists(ArrayList<String> names) {
+        //Make every string inside uppercase (i.e. ALICE)
+        ArrayList<String> tempNames = new ArrayList();
+        for (String name : names) {
+            //name.toUpperCase(); //can't do this because it doesn't store it, we cant modify it because it doesnt save anywhere
+            //so we created a second ArrayList above to store temporary names.
+            tempNames.add(name.toUpperCase());
+        }
+        names = tempNames;
+
+        //Remove the ones that start with "a"
+        tempNames = new ArrayList();
+        for (String name : names) {
+            if (!name.startsWith("A")) {
+                tempNames.add(name);
+            }
+        }
+
+        names = tempNames;
+
+        System.out.println(names);
+
+    }
+
+    static void solveViaStream(ArrayList<String> names) {
+        List<String> newNames =
+                names
+                .stream() //calls method called stream.
+                .map((name) -> { //map function takes an anonymous function
+                    return name.toUpperCase();
+                })
+                .filter((name) -> { //filter function tells if name should be included in the results
+                    return !name.startsWith("A");
+                })
+                .collect(Collectors.toList()); //turn this string back into a list
+
+        System.out.println(newNames);
     }
 }

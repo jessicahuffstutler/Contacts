@@ -5,7 +5,10 @@ import java.util.ArrayList;
  */
 public class Exercise5 {
     public static void main(String[] args) {
+
         String s = "To be or not to be, that is the question.";
+
+        System.out.println(s);
 
         //remove commas and periods
         s = s.replaceAll(",", "").replaceAll(".", "");
