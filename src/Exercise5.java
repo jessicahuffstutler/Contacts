@@ -8,10 +8,8 @@ public class Exercise5 {
 
         String s = "To be or not to be, that is the question.";
 
-        System.out.println(s);
-
         //remove commas and periods
-        s = s.replaceAll(",", "").replaceAll(".", "");
+        s = s.replaceAll(",", "").replaceAll("\\.", "");
         //make it all lower case
         s = s.toLowerCase();
         //then split into words
@@ -31,8 +29,9 @@ public class Exercise5 {
         for (String newWord : newWords) {
             if (!newStr.isEmpty()) {
                 newStr += " " + newWord;
+            } else {
+                newStr += newWord;
             }
-            newStr += newWord;
         }
 
         System.out.println(newStr);
