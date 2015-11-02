@@ -13,7 +13,7 @@ public class Exercise6 {
         ArrayList<String> names = new ArrayList(Arrays.asList("alice", "bob", "charlie", "david", "allen", "barbie", "colin", "dan")); //ititialize Arraylist on one line.
 
         //Take the first 5 (make a new ArrayList to store the first 5 in one command)
-//        my alternative way: List<String> five = names.subList(0, 5); //List is an interface that ArrayList implements
+        //my alternative way: List<String> five = names.subList(0, 5); //List is an interface that ArrayList implements
         names = new ArrayList(names.subList(0, 5)); //first index is inclusive and end index is exclusive
 
         //End display = ["BOB", "CHARLIE", "DAVID"]
